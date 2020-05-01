@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TODO Sinatra</title>
+  <link href="/favicon.ico" rel="shortcut icon">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700" rel="stylesheet">
+  <link href="/main.css" rel="stylesheet">
+
+  <script>
+  (function(name,path,ctx){ctx[name]=ctx[name]||{ready:function(fn){var h=document.getElementsByTagName('head')[0],s=document.createElement('script'),w=window,loaded;s.onload=s.onerror=s.onreadystatechange=function(){if((s.readyState&&!(/^c|loade/.test(s.readyState)))||loaded){return}s.onload=s.onreadystatechange=null;loaded=1;ctx[name].ready(fn)};s.async=1;s.src=path;h.parentNode.insertBefore(s,h)}}})
+  ('KeenTracking', 'https://cdn.jsdelivr.net/npm/keen-tracking@4/dist/keen-tracking.min.js', this);
+
+  KeenTracking.ready(function(){
+    const client = new KeenTracking({
+      projectId: '5bce2b59c9e77c00018f5028',
+      writeKey: '00F88238CC37E679E1596A9ACACAA6B013340DDFC4EF78000C043F4A5A414F9D665826228672CF8AE1A91B7F9937610367FC5676C7D2D9BFDA45162BB25941597BFCE0ADF2D18F8C92D2DEBE646474E10C2EF8B0C1AD81C0C8EF6FEEC98CEE82'
+    });
+
+    // Record events automatically
+    client.initAutoTracking();
+  });
+</script>
+
+</head>
+<body>
+  <section class="container">
+    <div class="container-todo">
+      <h1 class="heading">TO-DO with Sinatra</h1>
+      <form action="/create" method="post" class="add-task">
+        <input type="text" name="name_task" class="add-task__name" placeholder="<%= @tasks.empty? ? 'Create your first task' : 'Create another task' %>" autofocus>
+        <button type="submit" class="add-task__submit"><span>+</span></button>
+      </form>
+      <%= yield %>
+    </div>
+  </section>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+  crossorigin="anonymous"></script>
+  <script src="/main.js"></script>
+</body>
+</html>

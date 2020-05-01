@@ -1,0 +1,26 @@
+  <form action="/search" method="get" class="search-task">
+    <input type="text" name="search_task" class="search-task__name" placeholder="Can't find your task? Enter the name here">
+    <input type="submit" class="search-task__submit" value="Search">
+  </form>
+
+  <ul class="tasks-container tasks-unfinished">
+    <% @tasks.each do |element|  %>
+      <li <%= element["done"] == true ? 'class="completed"' : '' %>>
+        <span class="icon-action marks-done">
+          <form action="/update/<%= element["id"] %>" method="post">
+            <input type="hidden" name="_method" value="patch">
+            <button type="submit">✓</button>
+          </form>
+        </span>
+        <strong><%= element["title"] %></strong>
+        <span class="icon-action delete-task">
+          <form action="/delete/<%= element["id"] %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit">✗</button>
+          </form>
+        </span>
+      </li>
+    <% end %>
+  </ul>
+
+  <ul class="tasks-container tasks-done"></ul>

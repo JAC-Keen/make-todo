@@ -1,0 +1,23 @@
+<% if @search_task == nil %>
+  <h1 class="task-not-found">Sorry, we couldn't find your task :(</h1>
+<% else %>
+  <div class="task-container-search">
+    <span class="icon-action marks-done">
+      <form action="/update/<%= @search_task["id"] %>" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <button type="submit">✓</button>
+      </form>
+    </span>
+    <strong><%= @search_task["title"] %></strong>
+    <span class="icon-action delete-task">
+      <form action="/delete/<%= @search_task["id"] %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button type="submit">✗</button>
+      </form>
+    </span>
+  </div>
+<% end %>
+
+<div class="text-center">
+  <a href="/" class="btn-back">Return to all tasks</a>
+</div>
